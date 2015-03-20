@@ -6,9 +6,10 @@ void print(vector<map<string,string>> &vec)
 {
 	for( auto iter : vec )
 	{
+		cout << "   [" << endl;
 		for( auto it : iter )
-			cout << it.first << " : " << it.second << endl;
-		cout << endl;
+			cout << "    " << it.first << " : " << it.second << endl;
+		cout << "   ]" << endl;
 	}
 }
 
@@ -17,18 +18,22 @@ void f(obj *o , string k , string v)
 	vector<map<string,string>> it;
 	if(k==""&&v=="")
 	{
+		cout << "class " << o->getClassName() << endl;
+		cout << '{' << endl;
 		it = o->get();
-		puts("got objects:");
+		if( it.empty() )
+			exit(1);
 		print(it);
-		puts("===========");
 	}
 	else
 	{
-		cout << "select by " << k << " = " << v << endl;
+		cout << "class " << o->getClassName() ;
+		cout << " (select by " << k << " = " << v << ")" << endl;
+		cout << '{' << endl;
 		it = o->getSel(k,v);
-		puts("got objects:");
+		if( it.empty() )
+			exit(1);
 		print(it);
-		puts("===========");
 	}
 
 	if(o->hasChild)
@@ -44,7 +49,7 @@ void f(obj *o , string k , string v)
 			f(ch , key , res->second);
 		}
 	}
-
+	cout << '}' << endl;
 }
 
 int main()

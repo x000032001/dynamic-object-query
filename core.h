@@ -9,12 +9,11 @@ using std::endl;
 class core : public obj {
 	public:
 		core(){hasChild=false;}
-		void init(){}
-		vector<map<string,string>> get(){}
+		vector<map<string,string>> get(){return nil;}
 		vector<map<string,string>> getSel(string,string);
-		void fin(){}
 		obj* getChild(){return NULL;}
 		string getAssoc(){return NULL;}
+		string getClassName(){return "core";}
 	private:
 };
 
