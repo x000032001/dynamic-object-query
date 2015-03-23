@@ -1,10 +1,10 @@
 #include "core.h"
 
-vector<map<string,string>> core::getSel(string k,string v)
+arrOfmapSS core::getSel(string k,string v)
 {
-	vector<map<string,string>> dict;
+	arrOfmapSS dict;
 
-	map<string,string> core[5];
+	mapSS core[5];
 
 	core[1]["physical id"] = "0";
 	core[2]["physical id"] = "0";

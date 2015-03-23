@@ -9,8 +9,8 @@ using std::endl;
 class core : public obj {
 	public:
 		core(){hasChild=false;}
-		vector<map<string,string>> get(){return nil;}
-		vector<map<string,string>> getSel(string,string);
+		arrOfmapSS get(){return arrOfmapSS();}
+		arrOfmapSS getSel(string,string);
 		obj* getChild(){return NULL;}
 		string getAssoc(){return NULL;}
 		string getClassName(){return "core";}

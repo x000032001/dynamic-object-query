@@ -1,11 +1,12 @@
 #include "cpu.h"
 
-vector<map<string,string>> cpu::get()
+arrOfmapSS cpu::get()
 {
-	vector<map<string,string>> dict;
+	arrOfmapSS dict;
 
-	map<string,string> c[2];
+	mapSS c[2];
 
+	/* get information and put it yo dict */
 	c[0]["model name"] = "Intel Xeon";
 	c[1]["model name"] = "Intel Xeon";
 

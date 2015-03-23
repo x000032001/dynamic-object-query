@@ -9,8 +9,8 @@ using std::endl;
 class cpu : public obj {
 	public:
 		cpu(){hasChild=true; }
-		vector<map<string,string>> get();
-		vector<map<string,string>> getSel(string,string){return nil;}
+		arrOfmapSS get();
+		arrOfmapSS getSel(string,string){return arrOfmapSS();}
 		obj* getChild(){return &cu;}
 		string getAssoc(){return "physical id";}
 		string getClassName(){return "cpu";}

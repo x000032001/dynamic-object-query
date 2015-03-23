@@ -2,7 +2,7 @@
 #include "core.h"
 #include <cstdio>
 
-void print(vector<map<string,string>> &vec)
+void print(arrOfmapSS &vec)
 {
 	for( auto iter : vec )
 	{
@@ -15,7 +15,7 @@ void print(vector<map<string,string>> &vec)
 
 void f(obj *o , string k , string v)
 {
-	vector<map<string,string>> it;
+	arrOfmapSS it;
 	if(k==""&&v=="")
 	{
 		cout << "class " << o->getClassName() << endl;
