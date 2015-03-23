@@ -8,12 +8,31 @@ using std::endl;
 
 class cpu : public obj {
 	public:
-		cpu(){hasChild=true; }
-		arrOfmapSS get();
-		arrOfmapSS getSel(string,string){return arrOfmapSS();}
-		obj* getChild(){return &cu;}
-		string getAssoc(){return "physical id";}
-		string getClassName(){return "cpu";}
+		cpu(){
+			hasChild=true; 
+		}
+
+		arrOfmapSS get() override;
+
+		arrOfmapSS getSel(string,string) override 
+		{
+			return arrOfmapSS();
+		}
+
+		obj* getChild() override 
+		{
+			return &cu;
+		}
+
+		string getAssoc() override
+		{
+			return "physical id";
+		}
+
+		string getClassName() override
+		{
+			return "cpu";
+		}
 		
 	private:
 		core cu;

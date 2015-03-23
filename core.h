@@ -8,12 +8,32 @@ using std::endl;
 
 class core : public obj {
 	public:
-		core(){hasChild=false;}
-		arrOfmapSS get(){return arrOfmapSS();}
-		arrOfmapSS getSel(string,string);
-		obj* getChild(){return NULL;}
-		string getAssoc(){return NULL;}
-		string getClassName(){return "core";}
+		core()
+		{
+			hasChild=false;
+		}
+
+		arrOfmapSS get() override
+		{
+			return arrOfmapSS();
+		} 
+
+		arrOfmapSS getSel(string,string) override;
+
+		obj* getChild() override 
+		{
+			return NULL;
+		}
+
+		string getAssoc() override 
+		{
+			return NULL;
+		}
+
+		string getClassName() override 
+		{
+			return "core";
+		}
 	private:
 };
 
