@@ -12,8 +12,7 @@ REL_FLAGS=-Ofast -DNDEBUG
 DBG_FLAGS=-g -DDEBUG
 PROF_FLAGS=-pg
 
-SRCS=$(shell ls *.cpp)
-
+SRCS=$(filter-out parser_test.cpp,$(wildcard *.cpp))
 OBJS=$(patsubst %.cpp,%.o,$(SRCS))
 
 REL_OBJS=$(patsubst %.cpp,%_release.o,$(SRCS))

@@ -15,12 +15,7 @@ class obj {
 		~obj(){}
 
 		virtual arrOfmapSS get() = 0;
-		virtual arrOfmapSS getSel(string,string) = 0;
-		virtual obj* getChild() = 0;
-		virtual string getAssoc() = 0;
 		virtual string getClassName() = 0;
-		bool hasChild;
-
 };
 
 #endif

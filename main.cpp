@@ -1,61 +1,52 @@
 #include "cpu.h"
 #include "core.h"
+#include "parser.h"
 #include <cstdio>
 
-void print(arrOfmapSS &vec)
+string genText(obj *o)
 {
-	for( auto iter : vec )
-	{
-		cout << "   [" << endl;
-		for( auto it : iter )
-			cout << "    " << it.first << " : " << it.second << endl;
-		cout << "   ]" << endl;
-	}
-}
+	string ret;
+	ret += "{";
+		ret += "(";
+		ret += "name^" + o->getClassName();	
+		ret += ")";
 
-void f(obj *o , string k , string v)
-{
-	arrOfmapSS it;
-	if(k==""&&v=="")
-	{
-		cout << "class " << o->getClassName() << endl;
-		cout << '{' << endl;
-		it = o->get();
-		if( it.empty() )
-			exit(1);
-		print(it);
-	}
-	else
-	{
-		cout << "class " << o->getClassName() ;
-		cout << " (select by " << k << " = " << v << ")" << endl;
-		cout << '{' << endl;
-		it = o->getSel(k,v);
-		if( it.empty() )
-			exit(1);
-		print(it);
-	}
+		ret += "(";
+		ret += "type^const";
+		ret += ")";
 
-	if(o->hasChild)
-	{
-		obj* ch = o->getChild();
-		string key = o->getAssoc();
-		for( auto iter : it )
+		auto objs = o->get();
+		for( auto obj : objs )
 		{
-			auto res = iter.find( key );
-			if( res == iter.end() )
-				break;
-
-			f(ch , key , res->second);
+			ret += "[";
+			for( auto attr : obj )
+			{
+				ret += "<";
+				ret += attr.first + "^" + attr.second;
+				ret += ">";
+			}
+			ret += "]";
 		}
-	}
-	cout << '}' << endl;
+	ret += "}";
+
+	return ret;
 }
 
 int main()
 {
 	cpu c;
-	f(&c,"","");
+	core cq;
+
+	// start and end symnol can't be same
+	// {} () [] <> ^ is identify char , can't be use in strings
+	puts("@@@@@@@ testing parser");
+	auto r = parser::cut(genText(&c));
+	auto r2 = parser::cut(genText(&cq));
+	for( auto xd : r )
+		xd.print();
+
+	for( auto xd : r2 )
+		xd.print();
 
 	return 0;
 }

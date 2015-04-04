@@ -1,11 +1,10 @@
 #include "core.h"
 
-arrOfmapSS core::getSel(string k,string v)
+arrOfmapSS core::get()
 {
-	arrOfmapSS dict;
+	arrOfmapSS ret;
 
-	mapSS core[5];
-
+	mapSS core[6];
 	core[1]["physical id"] = "0";
 	core[2]["physical id"] = "0";
 	core[3]["physical id"] = "1";
@@ -22,16 +21,9 @@ arrOfmapSS core::getSel(string k,string v)
 	core[4]["mhz"] = "1596";
 
 	for( auto it : core )
-	{
-		auto iter = it.find(k);
-		if( iter == it.end() )
-			continue;
+		ret.push_back(it);
 
-		if( iter->second == v )
-			dict.push_back(it);
-	}
+	return ret;
 
-	return dict;
 }
-
 
