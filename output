@@ -1,0 +1,7 @@
+num@num-Aspire-V3-571G:~/code/dynamic-object-query$ ./main
+INSERT INTO "cpu" ("model name","physical id") VALUES ("Intel Xeon","0");
+INSERT INTO "cpu" ("model name","physical id") VALUES ("Intel Xeon","1");
+INSERT INTO "core" ("mhz","physical id","processor") VALUES ("1596","0","0");
+INSERT INTO "core" ("mhz","physical id","processor") VALUES ("1596","0","1");
+INSERT INTO "core" ("mhz","physical id","processor") VALUES ("1596","1","2");
+INSERT INTO "core" ("mhz","physical id","processor") VALUES ("1596","1","3");

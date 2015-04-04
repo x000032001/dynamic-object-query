@@ -36,6 +36,42 @@ class result
 				cout << "\t======\n" << endl;
 			}
 		}
+
+		vector<string> getSQL()
+		{
+			string tableName = infos["name"];
+			if( tableName.empty() )
+			{
+				puts("doesn't have type name");
+				return vector<string>();
+			}
+
+			vector<string> ret;
+
+			for( auto obj : objs )
+			{
+				/*
+					INSERT INTO "表格名" ("欄位1", "欄位2", ...)
+					VALUES ("值1", "值2", ...);
+				*/
+				string tmpCmd = "INSERT INTO \"" + tableName + "\" (";
+				string tmpVal = " VALUES (";
+				for( auto attr : obj )
+				{
+					tmpCmd += "\"" + attr.first + "\",";
+					tmpVal += "\"" + attr.second+ "\",";
+				}
+
+				if( !obj.empty() )
+				{
+					tmpCmd = tmpCmd.substr( 0 , tmpCmd.size()-1 );
+					tmpVal = tmpVal.substr( 0 , tmpVal.size()-1 );
+					ret.push_back( tmpCmd + ")" + tmpVal + ");");
+				}
+			}
+
+			return ret;
+		}
 };
 
 class parser 

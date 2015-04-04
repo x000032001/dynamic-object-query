@@ -32,21 +32,31 @@ string genText(obj *o)
 	return ret;
 }
 
+void parseAndGenSQL(const string &s)
+{
+	auto r = parser::cut(s);
+	for( auto xd : r )
+	{
+		auto v = xd.getSQL();
+		for( auto &s : v )
+			cout << s << endl;
+	}
+}
+
 int main()
 {
+	// declare objects in daemon and get information
 	cpu c;
 	core cq;
 
+	// in parser functions
 	// start and end symnol can't be same
 	// {} () [] <> ^ is identify char , can't be use in strings
-	puts("@@@@@@@ testing parser");
-	auto r = parser::cut(genText(&c));
-	auto r2 = parser::cut(genText(&cq));
-	for( auto xd : r )
-		xd.print();
 
-	for( auto xd : r2 )
-		xd.print();
+	// get information in string and pass to parser
+	// you can transfer text to agent via networking
+	parseAndGenSQL( genText(&c) );
+	parseAndGenSQL( genText(&cq) );
 
 	return 0;
 }
